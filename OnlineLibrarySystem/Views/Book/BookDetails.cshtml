@@ -1,0 +1,86 @@
+﻿@model OnlineLibrarySystem.Models.Book
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+        <h3>Libooky</h3>
+        <ul class="nav col-md-8 justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="User" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="User" asp-action="Shop">Shop</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="User" asp-action="AboutUs">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a asp-action="MyProfile" asp-controller="User" class="nav-link text-dark">MyProfile</a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="book-details">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-fluid rounded" src="@Model.CoverImage" alt="@Model.Title" />
+            </div>
+            <div class="col-md-8 mt-3 mt-md-0">
+                <h3>@Model.Title</h3>
+                <p><strong>Author:</strong> @Model.Author</p>
+                <p><strong>ISBN:</strong> @Model.ISBN</p>
+                <p><strong>Published Date:</strong> @Model.PublishedDate.ToShortDateString()</p>
+                <p><strong>Category:</strong> @Model.Category</p>
+                <p>@Model.Description</p>
+                <p><strong>Price:</strong> $@Model.Price</p>
+
+                @if (ViewBag.HavePurchase)
+                {
+                    <div class="buttons mt-3 text-center text-md-start">
+                        <a href="@Model.PDFFilePath" class="btn btn-primary w-50 w-md-auto">Read</a>
+                    </div>
+                }
+                else
+                {
+                    @if (ViewBag.HadBorrowed)
+                    {
+                        @if (DateTime.Now <= ViewBag.ReturnDate)
+                        {
+                            <div class="buttons mt-3 text-center text-md-start">
+                                <a href="@Model.PDFFilePath" class="btn btn-primary w-50 w-md-auto">Read</a>
+                                <span class="btn btn-secondary d-block mt-2">You have @(Math.Abs((ViewBag.ReturnDate - DateTime.Now).Days)) days left to access</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="buttons mt-3 text-center text-md-start">
+                                <span class="btn btn-primary d-block">Sorry, your access time has expired</span>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        @if (ViewBag.CanAfford)
+                        {
+                            <div class="buttons mt-3 text-center text-md-start">
+                                <form asp-action="Purchase" method="post" class="d-inline">
+                                    <input type="hidden" name="bookId" value="@Model.Id" />
+                                    <button type="submit" class="btn btn-success w-50 w-md-auto">Buy</button>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger mt-3">
+                                You do not have enough balance to buy this book.
+                            </div>
+                        }
+                        <form asp-action="Borrow" method="post" class="d-inline mt-2">
+                            <input type="hidden" name="bookId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-secondary w-50 w-md-auto mt-2">Borrow</button>
+                        </form>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

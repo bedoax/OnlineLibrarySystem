@@ -1,0 +1,30 @@
+﻿<div class="container">
+    <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+        <h3 class="my-0">Libooky</h3>
+        <nav class="navbar navbar-expand-md navbar-light w-100">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="User" class="nav-link text-dark">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="User" asp-action="Shop" class="nav-link text-dark">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="AboutUs" asp-controller="User" class="nav-link text-dark">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="MyProfile" asp-controller="User" class="nav-link text-warning">MyProfile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="d-flex justify-content-center mb-4">
+        <a asp-action="EditMyProfile" class="btn btn-primary me-2">Edit My Profile</a>
+        <a asp-action="Logout" asp-controller="Logout" class="btn btn-danger">Logout</a>
+    </div>
+</div>

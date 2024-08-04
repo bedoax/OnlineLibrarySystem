@@ -1,0 +1,94 @@
+﻿@model IEnumerable<OnlineLibrarySystem.Models.Book>
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+        <h3 class="">Libooky</h3>
+        <ul class="nav col-md-9 justify-content-center">
+            <li class="nav-item">
+                <a asp-action="Index" asp-controller="User" class="nav-link text-warning">Home</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="User" asp-action="Shop" class="nav-link text-dark">Shop</a>
+            </li>
+            <li class="nav-item">
+                <a asp-action="AboutUs" asp-controller="User" class="nav-link text-dark">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a asp-action="MyProfile" asp-controller="User" class="nav-link text-dark">MyProfile</a>
+            </li>
+        </ul>
+    </header>
+
+
+    <div class="text-center mb-4">
+        <span>Get Your E-Book With Libooky</span>
+        <h3>Recently Added</h3>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        @foreach (var book in Model.OrderByDescending(x => x.AddedAt).OrderByDescending(x => x.Id).Take(3))
+        {
+            <div class="col">
+                <div class="card h-100 text-center border-secondary">
+                    <img class="card-img-top img-fluid" src="@book.CoverImage" alt="@book.Title" style="object-fit: cover; height: 200px;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">Author: @book.Author</p>
+                        <p class="card-text">@book.Price$</p>
+                        <a asp-action="BookDetails" asp-controller="Book" asp-route-id="@book.Id" class="btn btn-primary w-50 rounded">Read Me</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+
+    <h3 class="text-center mt-4">Our Benefits</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 mb-4">
+        <div class="col">
+            <div class="d-flex flex-column align-items-center bg-primary text-white rounded p-3">
+                <span><i class="fa-solid fa-money-bill"></i></span>
+                <span>Cash Back</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-column align-items-center bg-primary text-white rounded p-3">
+                <span><i class="fa-solid fa-percent"></i></span>
+                <span>Huge Discount</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-column align-items-center bg-primary text-white rounded p-3">
+                <span><i class="fa-solid fa-shield"></i></span>
+                <span>Safe Refund</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-column align-items-center bg-primary text-white rounded p-3">
+                <span><i class="fa-solid fa-headset"></i></span>
+                <span>Help & Support</span>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <h3 class="text-center mt-4">Featured Products</h3>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        @foreach (var book in Model.Take(4))
+        {
+            <div class="col">
+                <div class="card h-100 text-center border-secondary">
+                    <img class="card-img-top img-fluid" src="@book.CoverImage" alt="@book.Title" style="object-fit: cover; height: 200px;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">Author: @book.Author</p>
+                        <p class="card-text">@book.Price$</p>
+                        <a asp-action="BookDetails" asp-controller="Book" asp-route-id="@book.Id" class="btn btn-primary w-50 rounded">Read Me</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

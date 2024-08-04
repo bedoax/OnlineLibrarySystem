@@ -1,0 +1,59 @@
+﻿@model IEnumerable<OnlineLibrarySystem.Models.Book>
+
+<div class="container">
+    <h1 class="text-center my-4">Welcome To Admin Page</h1>
+
+    <header class="d-flex flex-wrap justify-content-center mb-4">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" asp-action="Books" asp-controller="Admin">Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Users" asp-controller="Admin">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Logout" asp-controller="Logout">Logout</a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-action="AddBook" class="btn btn-primary">Add New Book</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Added At</th>
+                    <th>Updated At</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                        <td>@book.Category</td>
+                        <td>@book.Price</td>
+                        <td>@book.AddedAt.ToString("yyyy-MM-dd")</td>
+                        <td>@book.UpdatedAt.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a asp-action="EditBook" asp-route-id="@book.Id" class="btn btn-warning btn-sm">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-action="DeleteBook" asp-route-id="@book.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
