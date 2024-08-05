@@ -103,13 +103,11 @@ The Online Library System is a web application designed to manage a digital libr
 _Add screenshots  here._
 
 ## Contributing
-
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) for more information.
+i will add CONTRIBUTING.md soon
+`Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) for more information.`
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-Feel free to adjust any sections to better fit your project. Add screenshots, a `CONTRIBUTING.md` file, and a `LICENSE` file as needed to complete the documentation.
