@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineLibrarySystem.Data;
 using OnlineLibrarySystem.Models;
 
 namespace OnlineLibrarySystem.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         private readonly ApplicationDbContext _context;

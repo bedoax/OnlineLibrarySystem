@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineLibrarySystem.Data;
 using OnlineLibrarySystem.Models;
 using System.Linq;
@@ -15,12 +16,12 @@ namespace OnlineLibrarySystem.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AddBook()
         {
             return View();
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult BookDetails(int id)
         {
             var book = _context.Books.FirstOrDefault(b => b.Id == id);
@@ -48,7 +49,7 @@ namespace OnlineLibrarySystem.Controllers
             return View(book);
         }
 
-
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<IActionResult> Purchase(int bookId)
         {
@@ -89,7 +90,7 @@ namespace OnlineLibrarySystem.Controllers
             TempData["SuccessMessage"] = "Book purchased successfully!";
             return RedirectToAction("BookDetails", new { id = bookId });
         }
-
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<IActionResult> Borrow(int bookId)
         {

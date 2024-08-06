@@ -253,3 +253,4 @@ C:\Users\abdel\source\repos\OnlineLibrarySystem\OnlineLibrarySystem\bin\Debug\ne
 C:\Users\abdel\source\repos\OnlineLibrarySystem\OnlineLibrarySystem\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\abdel\source\repos\OnlineLibrarySystem\OnlineLibrarySystem\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\abdel\source\repos\OnlineLibrarySystem\OnlineLibrarySystem\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\abdel\source\repos\OnlineLibrarySystem\OnlineLibrarySystem\obj\Debug\net8.0\OnlineLibrarySystem.sourcelink.json

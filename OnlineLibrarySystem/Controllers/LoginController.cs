@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using OnlineLibrarySystem.Data;
 using OnlineLibrarySystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OnlineLibrarySystem.Controllers
 {
@@ -22,10 +23,12 @@ namespace OnlineLibrarySystem.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
 
         public async Task<IActionResult> Login(Login login)

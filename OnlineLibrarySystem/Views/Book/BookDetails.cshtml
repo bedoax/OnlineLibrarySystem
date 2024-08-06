@@ -45,14 +45,14 @@
                     {
                         @if (DateTime.Now <= ViewBag.ReturnDate)
                         {
-                            <div class="buttons mt-3 text-center text-md-start">
+                            <div class="buttons  text-center text-md-start">
                                 <a href="@Model.PDFFilePath" class="btn btn-primary w-50 w-md-auto">Read</a>
                                 <span class="btn btn-secondary d-block mt-2">You have @(Math.Abs((ViewBag.ReturnDate - DateTime.Now).Days)) days left to access</span>
                             </div>
                         }
                         else
                         {
-                            <div class="buttons mt-3 text-center text-md-start">
+                            <div class="buttons  text-center text-md-start">
                                 <span class="btn btn-primary d-block">Sorry, your access time has expired</span>
                             </div>
                         }
@@ -61,7 +61,7 @@
                     {
                         @if (ViewBag.CanAfford)
                         {
-                            <div class="buttons mt-3 text-center text-md-start">
+                            <div class="buttons  text-center text-md-start">
                                 <form asp-action="Purchase" method="post" class="d-inline">
                                     <input type="hidden" name="bookId" value="@Model.Id" />
                                     <button type="submit" class="btn btn-success w-50 w-md-auto">Buy</button>
@@ -74,10 +74,12 @@
                                 You do not have enough balance to buy this book.
                             </div>
                         }
+                        <div class="buttons text-center text-md-start">
                         <form asp-action="Borrow" method="post" class="d-inline mt-2">
                             <input type="hidden" name="bookId" value="@Model.Id" />
                             <button type="submit" class="btn btn-secondary w-50 w-md-auto mt-2">Borrow</button>
                         </form>
+                        </div>
                     }
                 }
             </div>
